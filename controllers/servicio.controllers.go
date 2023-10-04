@@ -6,6 +6,8 @@ import (
 
 	"github.com/gin-gonic/gin"
 	_ "github.com/go-sql-driver/mysql"
+
+	"github.com/rez-dev/backend-go/app-go/models"
 )
 
 func conexionDB() (conexion *sql.DB) {

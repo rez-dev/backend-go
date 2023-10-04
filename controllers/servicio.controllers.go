@@ -7,6 +7,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	_ "github.com/go-sql-driver/mysql"
+	"github.com/rez-dev/backend-go/models"
 )
 
 func conexionDB() (conexion *sql.DB) {
@@ -23,13 +24,14 @@ func conexionDB() (conexion *sql.DB) {
 
 func GetTerms(c *gin.Context) {
 	conexionEstablecida := conexionDB()
+	// obtener registros que tienen el mismo nombre
 	obtenerRegistros, err := conexionEstablecida.Query("SELECT * FROM wp_terms")
 	if err != nil {
 		// panic(err.Error())
 		c.JSON(http.StatusNotFound, gin.H{"error": err.Error()})
 	}
-	term := Term{}
-	terms := Terms{}
+	term := models.Term{}
+	terms := models.Terms{}
 	for obtenerRegistros.Next() {
 		var id, term_group int
 		var name, slug string

@@ -1,9 +1,12 @@
 package main
 
 import (
-	"fmt"
+	"github.com/gin-gonic/gin"
+	"github.com/rez-dev/backend-go/controllers"
 )
 
 func main() {
-	fmt.Println("Hola mundo")
+	router := gin.Default()
+	router.GET("/terms", controllers.GetTerms)
+	router.Run("localhost:8080")
 }

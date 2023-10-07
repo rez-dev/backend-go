@@ -8,5 +8,7 @@ import (
 func main() {
 	router := gin.Default()
 	router.GET("/terms", controllers.GetTerms)
+	router.GET("/users", controllers.GetUsers)
+	router.GET("/tests", controllers.GetTests)
 	router.Run("localhost:8080")
 }
